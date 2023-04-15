@@ -16,10 +16,17 @@
         "GetMoviesHandler": {
           "deploymentBucketName": "amplify-moviessharingapp-dev-221547-deployment",
           "s3Key": "amplify-builds/GetMoviesHandler-49646a42455a392b4a42-build.zip"
+        },
+        "confirmSignUp": {
+          "deploymentBucketName": "amplify-moviessharingapp-dev-221547-deployment",
+          "s3Key": "amplify-builds/confirmSignUp-596276645076706c6762-build.zip"
         }
       },
       "api": {
         "moviesapi": {}
+      },
+      "auth": {
+        "moviessharingapp": {}
       }
     }
   }

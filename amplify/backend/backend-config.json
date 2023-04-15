@@ -3,10 +3,7 @@
     "moviesapi": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "GetMoviesHandler"
         }
@@ -15,8 +12,33 @@
       "service": "API Gateway"
     }
   },
+  "auth": {
+    "moviessharingapp": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": ["SMS"],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": ["EMAIL"],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": ["EMAIL"]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
+    }
+  },
   "function": {
     "GetMoviesHandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "confirmSignUp": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -36,6 +58,22 @@
         {
           "category": "function",
           "resourceName": "GetMoviesHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_confirmSignUp_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "confirmSignUp"
+        }
+      ]
+    },
+    "AMPLIFY_function_confirmSignUp_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "confirmSignUp"
         }
       ]
     }
