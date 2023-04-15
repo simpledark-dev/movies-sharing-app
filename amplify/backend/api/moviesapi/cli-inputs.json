@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/movies": {
+      "name": "/movies",
+      "lambdaFunction": "GetMoviesHandler",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

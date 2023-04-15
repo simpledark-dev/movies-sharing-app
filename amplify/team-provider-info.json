@@ -10,6 +10,17 @@
       "StackName": "amplify-moviessharingapp-dev-221547",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:450410679006:stack/amplify-moviessharingapp-dev-221547/672f3230-dba0-11ed-89bc-06e6a93b3d48",
       "AmplifyAppId": "d25itmt1rjcu2g"
+    },
+    "categories": {
+      "function": {
+        "GetMoviesHandler": {
+          "deploymentBucketName": "amplify-moviessharingapp-dev-221547-deployment",
+          "s3Key": "amplify-builds/GetMoviesHandler-49646a42455a392b4a42-build.zip"
+        }
+      },
+      "api": {
+        "moviesapi": {}
+      }
     }
   }
 }

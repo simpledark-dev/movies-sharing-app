@@ -1,1 +1,43 @@
-{}
+{
+  "api": {
+    "moviesapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GetMoviesHandler"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "GetMoviesHandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_GetMoviesHandler_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetMoviesHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetMoviesHandler_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetMoviesHandler"
+        }
+      ]
+    }
+  }
+}
