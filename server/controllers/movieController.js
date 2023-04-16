@@ -3,9 +3,10 @@ const db = require("../config/db");
 // Get all shared movies
 exports.getAllSharedMovies = (req, res) => {
   const query = `
-    SELECT m.*, ms.user_id FROM movies m
+    SELECT m.*, u.email
+    FROM movies m
     JOIN movies_sharing ms ON m.id = ms.movie_id
-    JOIN users u ON ms.user_id = u.id
+    JOIN users u ON ms.user_id = u.id;
   `;
 
   db.query(query, (err, results) => {
