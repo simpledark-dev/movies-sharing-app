@@ -44,7 +44,7 @@ exports.login = (req, res) => {
       }
 
       const token = generateToken(user);
-      return res.json({ token });
+      return res.json({ user, token });
     });
   });
 };
@@ -74,7 +74,12 @@ exports.register = (req, res) => {
         email: email,
       };
       const token = generateToken(user);
-      return res.json({ token });
+      return res.json({ user, token });
     });
   });
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie("jwt");
+  res.json({ message: "Logged out successfully" });
 };
