@@ -1,6 +1,10 @@
-import Link from "next/link";
+import Navbar from "@/components/navbar";
+import UserContext from "@/context/userContext";
+import { useContext } from "react";
 
 const Share = () => {
+  const { user } = useContext(UserContext);
+
   const handleShareMovie = async () => {
     fetch("http://localhost:5000/movies", {
       method: "POST",
@@ -12,7 +16,7 @@ const Share = () => {
         description: "abc",
         youtubeVideoId: "abc",
         user: {
-          id: 1,
+          id: user.id,
         },
       }),
     });
@@ -20,8 +24,8 @@ const Share = () => {
 
   return (
     <div>
-      <Link href="/">Home</Link>
-
+      <Navbar />
+      <input type="text" />
       <button onClick={handleShareMovie}>Share</button>
     </div>
   );
