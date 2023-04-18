@@ -3,7 +3,7 @@ import UserContext from "@/context/userContext";
 import { BASE_API_URL } from "@/config/constants";
 
 const LoginForm = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,26 +27,33 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="flex gap-4">
-      <label>
-        Email:
+    <form onSubmit={handleLogin} className="flex gap-4 items-center">
+      <label className=" space-x-2">
+        <span>Email:</span>
         <input
+          className="shadow border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <label>
-        Password:
+      <label className=" space-x-2">
+        <span>Password:</span>
         <input
+          className="shadow border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type="submit">Login/Register</button>
+      <button
+        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow"
+        type="submit"
+      >
+        Login/Register
+      </button>
     </form>
   );
 };
