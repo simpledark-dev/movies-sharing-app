@@ -6,7 +6,8 @@ exports.getAllSharedMovies = (req, res) => {
     SELECT m.*, u.email
     FROM movies m
     JOIN movies_sharing ms ON m.id = ms.movie_id
-    JOIN users u ON ms.user_id = u.id;
+    JOIN users u ON ms.user_id = u.id
+    ORDER BY m.created_at DESC;
   `;
 
   db.query(query, (err, results) => {
