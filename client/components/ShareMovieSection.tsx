@@ -7,7 +7,7 @@ import Container from "@/layout/container";
 import { getYoutubeIdFromURL } from "@/utils/youtube";
 
 const getYoutubeData = async (videoId: string) => {
-  const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.YOUTUBE_API_KEY}`;
+  const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${YOUTUBE_API_KEY}`;
 
   try {
     const response = await fetch(apiUrl);
