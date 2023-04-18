@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BASE_API_URL } from "@/config/constants";
-import Container from "@/layout/container";
 import ClipLoader from "react-spinners/ClipLoader";
+
+import Container from "@/layout/container";
+
+import { BASE_API_URL } from "@/config/constants";
 
 interface Movie {
   id: number;

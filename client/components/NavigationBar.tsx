@@ -1,10 +1,18 @@
-import { BASE_API_URL } from "@/config/constants";
-import UserContext from "@/context/userContext";
-import Container from "@/layout/container";
-import { eraseCookie } from "@/utils/cookie";
-import Link from "next/link";
 import React, { useContext } from "react";
+import Link from "next/link";
+
+// Context
+import UserContext from "@/context/userContext";
+
+// Component/Layout
+import Container from "@/layout/container";
 import LoginForm from "./Login";
+
+// Constants
+import { BASE_API_URL } from "@/config/constants";
+
+// Util
+import { eraseCookie } from "@/utils/cookie";
 
 const NavigationBar = () => {
   const { user, setUser } = useContext(UserContext);

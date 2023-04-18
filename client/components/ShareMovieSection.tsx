@@ -1,9 +1,15 @@
-import UserContext from "@/context/userContext";
-import { getCookieValue } from "@/utils/cookie";
-import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { BASE_API_URL, YOUTUBE_API_KEY } from "@/config/constants";
+import { useRouter } from "next/router";
+
+// Context
+import UserContext from "@/context/userContext";
+
+// Container
 import Container from "@/layout/container";
+
+import { BASE_API_URL, YOUTUBE_API_KEY } from "@/config/constants";
+// Utils
+import { getCookieValue } from "@/utils/cookie";
 import { getYoutubeIdFromURL } from "@/utils/youtube";
 
 const getYoutubeData = async (videoId: string) => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import UserContext from "@/context/userContext";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState(null);

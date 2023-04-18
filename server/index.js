@@ -1,11 +1,17 @@
+// Init express app
 const express = require("express");
 const app = express();
-const cors = require("cors");
-require("dotenv").config();
-const routes = require("./routes");
-
 app.use(express.json());
+
+// Cors
+const cors = require("cors");
 app.use(cors());
+
+// Use .env
+require("dotenv").config();
+
+// Get routes
+const routes = require("./routes");
 
 app.use("/auth", routes.authRoutes);
 app.use("/movies", routes.movieRoutes);

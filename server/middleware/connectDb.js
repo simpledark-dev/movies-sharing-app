@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const dbConfig = require("../config/db");
 
-function connectDb(req, res, next) {
+const connectDb = (req, res, next) => {
   const connection = mysql.createConnection(dbConfig);
   connection.connect(function (err) {
     if (err) {
@@ -12,6 +12,6 @@ function connectDb(req, res, next) {
     req.db = connection;
     next();
   });
-}
+};
 
 module.exports = connectDb;
