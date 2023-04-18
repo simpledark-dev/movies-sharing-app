@@ -1,5 +1,7 @@
 # Movies Sharing App
 
+**Demo**: https://movies-sharing-app-frontend.vercel.app/
+
 ## Technologies:
 
 ### Client:
