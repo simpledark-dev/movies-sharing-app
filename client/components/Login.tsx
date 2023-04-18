@@ -27,7 +27,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className="flex gap-4">
       <label>
         Email:
         <input
