@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const db = require("../config/db");
 
 // Function to generate JWT token
 const generateToken = (user) => {
@@ -22,7 +21,7 @@ exports.login = (req, res) => {
   const query = "SELECT * FROM users WHERE email = ?";
   const values = [email];
 
-  db.query(query, values, (err, results) => {
+  req.db.query(query, values, (err, results) => {
     if (err) {
       console.log(err);
       return res.status(500).json({ error: "Error logging in" });
@@ -47,7 +46,6 @@ exports.login = (req, res) => {
       return res.json({ user, token });
     });
   });
-  db.release();
 };
 
 // Register controller
@@ -64,7 +62,7 @@ exports.register = (req, res) => {
     const query = "INSERT INTO users (email, password) VALUES (?, ?)";
     const values = [email, hashedPassword];
 
-    db.query(query, values, (err, results) => {
+    req.db.query(query, values, (err, results) => {
       if (err) {
         console.log(err);
         return res.status(500).json({ error: "Error registering user" });
@@ -77,7 +75,6 @@ exports.register = (req, res) => {
       const token = generateToken(user);
       return res.json({ user, token });
     });
-    db.release();
   });
 };
 

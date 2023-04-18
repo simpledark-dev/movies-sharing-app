@@ -1,5 +1,3 @@
-const db = require("../config/db");
-
 // Get all shared movies
 exports.getAllSharedMovies = (req, res) => {
   const query = `
@@ -10,7 +8,7 @@ exports.getAllSharedMovies = (req, res) => {
     ORDER BY m.created_at DESC;
   `;
 
-  db.query(query, (err, results) => {
+  req.db.query(query, (err, results) => {
     if (err) {
       console.log(err);
       return res
@@ -20,7 +18,6 @@ exports.getAllSharedMovies = (req, res) => {
 
     return res.json(results);
   });
-  db.release();
 };
 
 // Add a new movie
@@ -32,7 +29,7 @@ exports.postMovie = (req, res) => {
     "INSERT INTO movies (title, description, youtube_video_id) VALUES (?, ?, ?)";
   const values = [title, description, youtubeVideoId];
 
-  db.query(query, values, (err, results) => {
+  req.db.query(query, values, (err, results) => {
     if (err) {
       console.log(err);
       return res.status(500).json({ error: "Error adding movie" });
@@ -50,18 +47,16 @@ exports.postMovie = (req, res) => {
       id: results.insertId,
     });
   });
-  db.release();
 };
 
 const updateMoviesSharingTable = (userId, movieId) => {
   const query = "INSERT INTO movies_sharing (user_id, movie_id) VALUES (?, ?)";
   const values = [userId, movieId];
 
-  db.query(query, values, (err) => {
+  req.db.query(query, values, (err) => {
     if (err) {
       console.log(err);
       return err;
     }
   });
-  db.release();
 };
