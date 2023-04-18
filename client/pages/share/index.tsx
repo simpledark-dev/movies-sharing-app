@@ -3,7 +3,7 @@ import { getCookieValue } from "@/utils/cookie";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { BASE_API_URL } from "@/config/constants";
-import Navbar from "@/components/Navbar";
+import NavigationBar from "@/components/NavigationBar";
 
 const Share = () => {
   const { user } = useContext(UserContext);
@@ -39,7 +39,7 @@ const Share = () => {
 
   return (
     <div>
-      <Navbar />
+      <NavigationBar />
       {user && (
         <>
           <input type="text" />
