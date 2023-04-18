@@ -7,27 +7,46 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e: any) => {
+  const handleLoginRegister = async (e: any) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(`${BASE_API_URL}/auth/login`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      setUser(data.user);
-      document.cookie = `jwtToken=${data.token}`;
-    } catch (error) {
-      console.error(error);
+    const action = e.target.getAttribute("data-action-type");
+
+    if (action === "login") {
+      try {
+        const response = await fetch(`${BASE_API_URL}/auth/login`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        setUser(data.user);
+        document.cookie = `jwtToken=${data.token}`;
+      } catch (error) {
+        console.error(error);
+      }
+    } else if (action === "register") {
+      try {
+        const response = await fetch(`${BASE_API_URL}/auth/register`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        setUser(data.user);
+        document.cookie = `jwtToken=${data.token}`;
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
   return (
-    <form onSubmit={handleLogin} className="flex gap-4 items-center">
+    <form onSubmit={handleLoginRegister} className="flex gap-2 items-center">
       <label className=" space-x-2">
         <span>Email:</span>
         <input
@@ -51,8 +70,18 @@ const LoginForm = () => {
       <button
         className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow"
         type="submit"
+        data-action-type="login"
+        onClick={handleLoginRegister}
       >
-        Login/Register
+        Login
+      </button>
+      <button
+        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow"
+        type="submit"
+        data-action-type="register"
+        onClick={handleLoginRegister}
+      >
+        Register
       </button>
     </form>
   );
