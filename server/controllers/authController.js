@@ -8,7 +8,7 @@ const generateToken = (user) => {
     id: user.id,
     email: user.email,
   };
-  const secret = "mysecretkey";
+  const secret = process.env.SECRET_KEY;
   const options = {
     expiresIn: "1d",
   };
