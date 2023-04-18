@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
-import UserContext from "@/context/userContext";
 import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
-  const { user, setUser } = useContext(UserContext);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {

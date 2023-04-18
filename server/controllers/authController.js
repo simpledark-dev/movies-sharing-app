@@ -79,7 +79,17 @@ exports.register = (req, res) => {
   });
 };
 
+// Logout controller
 exports.logout = (req, res) => {
   res.clearCookie("jwt");
   res.json({ message: "Logged out successfully" });
+};
+
+// Verify token controller
+exports.verifyToken = (req, res) => {
+  // Get the user details from the request object (set by the verifyToken middleware)
+  const user = req.user;
+
+  // Return the user details
+  return res.json({ user });
 };

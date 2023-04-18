@@ -1,4 +1,5 @@
 import UserContext from "@/context/userContext";
+import { eraseCookie } from "@/utils/cookie";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 
@@ -20,6 +21,7 @@ const LoginForm = () => {
       });
       const data = await response.json();
       setUser(data.user);
+      document.cookie = `jwtToken=${data.token}`;
     } catch (error) {
       console.error(error);
     }
@@ -56,6 +58,7 @@ const Navbar = () => {
     fetch("http://localhost:5000/auth/logout", { method: "POST" })
       .then(() => {
         setUser(null);
+        eraseCookie("jwtToken");
       })
       .catch((err) => {
         console.log(err);
