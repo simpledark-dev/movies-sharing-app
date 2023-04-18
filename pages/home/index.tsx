@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
+import { BASE_API_URL } from "@/config/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch("http://localhost:5000/movies");
+        const response = await fetch(`${BASE_API_URL}/movies`);
         const data = await response.json();
         console.log(data);
         setMovies(data);

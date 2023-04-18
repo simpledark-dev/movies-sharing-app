@@ -1,3 +1,4 @@
+import { BASE_API_URL } from "@/config/constants";
 import UserContext from "@/context/userContext";
 import { eraseCookie } from "@/utils/cookie";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch(`${BASE_API_URL}/auth/login`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -55,7 +56,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     // Send logout request to server
-    fetch("http://localhost:5000/auth/logout", { method: "POST" })
+    fetch(`${BASE_API_URL}/auth/logout`, { method: "POST" })
       .then(() => {
         setUser(null);
         eraseCookie("jwtToken");
