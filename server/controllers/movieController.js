@@ -13,7 +13,9 @@ exports.getAllSharedMovies = (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.log(err);
-      return res.status(500).json({ error: "Error getting shared movies" });
+      return res
+        .status(500)
+        .json({ error: "Error getting shared movies" + err });
     }
 
     return res.json(results);
