@@ -21,7 +21,8 @@
 - NodeJS
 - ExpressJS
 - RESTful APIs
+- JWT
 - MVC
-- AWS RDS - MySQL
+- AWS RDS - MySQL Database
 - Sinon + Chai for unit tests (controllers, middlewares,...)
 - Vercel: deployment
