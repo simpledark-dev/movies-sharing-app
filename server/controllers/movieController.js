@@ -36,7 +36,11 @@ exports.postMovie = (req, res) => {
     }
 
     // Update the movies_sharing table
-    const error = updateMoviesSharingTable(req.body.user.id, results.insertId);
+    const error = updateMoviesSharingTable(
+      req,
+      req.body.user.id,
+      results.insertId
+    );
 
     if (error) {
       return res.status(500).json({ error: "Error updating movies sharing" });
@@ -49,7 +53,7 @@ exports.postMovie = (req, res) => {
   });
 };
 
-const updateMoviesSharingTable = (userId, movieId) => {
+const updateMoviesSharingTable = (req, userId, movieId) => {
   const query = "INSERT INTO movies_sharing (user_id, movie_id) VALUES (?, ?)";
   const values = [userId, movieId];
 

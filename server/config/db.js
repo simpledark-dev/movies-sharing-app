@@ -1,5 +1,3 @@
-const mysql = require("mysql");
-
 const dbConfig = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,

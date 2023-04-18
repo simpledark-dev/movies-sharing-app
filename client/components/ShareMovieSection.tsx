@@ -35,7 +35,7 @@ const ShareMovieSection = () => {
       const videoTitle = youtubeData.items[0].snippet.title;
       const videoDescription = youtubeData.items[0].snippet.description;
 
-      fetch(`${BASE_API_URL}/movies`, {
+      await fetch(`${BASE_API_URL}/movies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,9 +52,9 @@ const ShareMovieSection = () => {
       });
       setMessage("");
       // Auto redirect to home after sharing a movie
-      setTimeout(() => {
-        router.push("/");
-      }, 200);
+      // setTimeout(() => {
+      //   router.push("/");
+      // }, 200);
     } catch (err) {
       console.log(err);
       setMessage("Oops! Something went wrong. Check your Youtube URL again.");
