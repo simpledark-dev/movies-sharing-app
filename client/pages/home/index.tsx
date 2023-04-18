@@ -25,6 +25,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <p className="text-blue-500 text-xl">ABCD</p>
       {movies.map((movie: any) => {
         return (
           <React.Fragment key={movie.id}>
