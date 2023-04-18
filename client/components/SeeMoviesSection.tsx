@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Inter } from "next/font/google";
-import NavigationBar from "@/components/NavigationBar";
 import { BASE_API_URL } from "@/config/constants";
 import Container from "@/layout/container";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const SeeMoviesSection = () => {
   const [movies, setMovies] = useState([]);
@@ -25,15 +21,28 @@ const SeeMoviesSection = () => {
 
   return (
     <Container>
-      {movies.map((movie: any) => {
-        return (
-          <React.Fragment key={movie.id}>
-            <p>Title: {movie.title}</p>
-            <p>Shared by: {movie.email}</p>
-            <hr />
-          </React.Fragment>
-        );
-      })}
+      <div className="  space-y-8">
+        {movies.map((movie: any) => {
+          return (
+            <div key={movie.id} className="flex gap-8 justify-center">
+              <iframe
+                className="w-1/3 aspect-video max-h-56 rounded"
+                src={`https://www.youtube.com/embed/${movie.youtube_video_id}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Embedded youtube"
+              />
+              <div className="w-1/2">
+                <h3 className="text-lg text-red-500">{movie.title}</h3>
+                <p>Shared by: {movie.email}</p>
+                <h3 className="text-md">Description:</h3>
+                <p className="text-sm">{movie.description}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </Container>
   );
 };
