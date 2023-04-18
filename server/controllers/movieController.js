@@ -20,6 +20,7 @@ exports.getAllSharedMovies = (req, res) => {
 
     return res.json(results);
   });
+  db.release();
 };
 
 // Add a new movie
@@ -49,6 +50,7 @@ exports.postMovie = (req, res) => {
       id: results.insertId,
     });
   });
+  db.release();
 };
 
 const updateMoviesSharingTable = (userId, movieId) => {
@@ -61,4 +63,5 @@ const updateMoviesSharingTable = (userId, movieId) => {
       return err;
     }
   });
+  db.release();
 };

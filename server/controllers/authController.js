@@ -47,6 +47,7 @@ exports.login = (req, res) => {
       return res.json({ user, token });
     });
   });
+  db.release();
 };
 
 // Register controller
@@ -76,6 +77,7 @@ exports.register = (req, res) => {
       const token = generateToken(user);
       return res.json({ user, token });
     });
+    db.release();
   });
 };
 
