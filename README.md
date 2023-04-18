@@ -9,6 +9,7 @@
 - NextJS
 - TypeScript
 - Tailwind: styling
+- Context: manage user states
 - Youtube API: get Youtube video's title and description with video ID
 - fetch: API requests
 - Jest for unit tests
