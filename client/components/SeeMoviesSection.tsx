@@ -3,10 +3,20 @@ import { BASE_API_URL } from "@/config/constants";
 import Container from "@/layout/container";
 import ClipLoader from "react-spinners/ClipLoader";
 
+interface Movie {
+  id: number;
+  youtube_video_id: string;
+  title: string;
+  description: string;
+  email: string;
+}
+
 const SeeMoviesSection = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchMovies = async () => {
       try {
         const response = await fetch(`${BASE_API_URL}/movies`);
@@ -19,6 +29,7 @@ const SeeMoviesSection = () => {
       } catch (error) {
         console.error(error);
       }
+      setLoading(false);
     };
     fetchMovies();
   }, []);
@@ -26,7 +37,7 @@ const SeeMoviesSection = () => {
   return (
     <Container>
       <div className="  space-y-8">
-        {movies ? (
+        {!loading ? (
           movies.map((movie: any) => {
             return (
               <div key={movie.id} className="flex gap-8 justify-center">
