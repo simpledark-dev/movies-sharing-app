@@ -1,9 +1,9 @@
-import Navbar from "@/components/navbar";
 import UserContext from "@/context/userContext";
 import { getCookieValue } from "@/utils/cookie";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { BASE_API_URL } from "@/config/constants";
+import Navbar from "@/components/Navbar";
 
 const Share = () => {
   const { user } = useContext(UserContext);

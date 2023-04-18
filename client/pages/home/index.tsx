@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { BASE_API_URL } from "@/config/constants";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +25,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <p className="text-blue-500 text-xl">ABCD</p>
       {movies.map((movie: any) => {
         return (
           <React.Fragment key={movie.id}>
