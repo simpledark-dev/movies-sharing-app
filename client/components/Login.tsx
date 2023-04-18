@@ -6,13 +6,12 @@ const LoginForm = () => {
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [actionType, setActionType] = useState("");
 
   const handleLoginRegister = async (e: any) => {
     e.preventDefault();
 
-    const action = e.target.getAttribute("data-action-type");
-
-    if (action === "login") {
+    if (actionType === "login") {
       try {
         const response = await fetch(`${BASE_API_URL}/auth/login`, {
           headers: {
@@ -27,7 +26,7 @@ const LoginForm = () => {
       } catch (error) {
         console.error(error);
       }
-    } else if (action === "register") {
+    } else if (actionType === "register") {
       try {
         const response = await fetch(`${BASE_API_URL}/auth/register`, {
           headers: {
@@ -70,16 +69,14 @@ const LoginForm = () => {
       <button
         className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow"
         type="submit"
-        data-action-type="login"
-        onClick={handleLoginRegister}
+        onClick={() => setActionType("login")}
       >
         Login
       </button>
       <button
         className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow"
         type="submit"
-        data-action-type="register"
-        onClick={handleLoginRegister}
+        onClick={() => setActionType("register")}
       >
         Register
       </button>
