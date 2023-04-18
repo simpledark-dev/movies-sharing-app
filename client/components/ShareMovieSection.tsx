@@ -86,7 +86,7 @@ const ShareMovieSection = () => {
                 Share
               </button>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <p className="text-sm text-red-500">{message}</p>
             </div>
           </div>

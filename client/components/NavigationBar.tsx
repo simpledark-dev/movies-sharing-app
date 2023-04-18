@@ -36,7 +36,9 @@ const NavigationBar = () => {
         </Link>
         {user ? (
           <div className="flex gap-4 items-center">
-            <p>Welcome {user.email}</p>
+            <p>
+              Welcome <span className="font-semibold">{user.email}</span>
+            </p>
             <Link href="/share">
               <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow">
                 Share a movie
