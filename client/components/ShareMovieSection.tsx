@@ -52,9 +52,9 @@ const ShareMovieSection = () => {
       });
       setMessage("");
       // Auto redirect to home after sharing a movie
-      // setTimeout(() => {
-      //   router.push("/");
-      // }, 200);
+      setTimeout(() => {
+        router.push("/");
+      }, 200);
     } catch (err) {
       console.log(err);
       setMessage("Oops! Something went wrong. Check your Youtube URL again.");
